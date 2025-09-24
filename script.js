@@ -268,6 +268,27 @@ window.addEventListener('load', () => {
     document.body.classList.add('loaded');
 });
 
+// Force mobile viewport on mobile devices
+function forceMobileViewport() {
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    const isSmallScreen = window.innerWidth <= 768;
+    
+    if (isMobile || isSmallScreen) {
+        // Force mobile viewport
+        const viewport = document.querySelector('meta[name="viewport"]');
+        if (viewport) {
+            viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
+        }
+        
+        // Add mobile class to body
+        document.body.classList.add('mobile-device');
+    }
+}
+
+// Run on load and resize
+window.addEventListener('load', forceMobileViewport);
+window.addEventListener('resize', forceMobileViewport);
+
 // Add some interactive hover effects
 document.querySelectorAll('.service-card, .consultation-item').forEach(card => {
     card.addEventListener('mouseenter', function() {

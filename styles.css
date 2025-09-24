@@ -39,6 +39,12 @@
     --brand: #34d399;
 }
 
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+
 body {
     font-family: 'Cairo', sans-serif;
     line-height: 1.6;
@@ -48,6 +54,26 @@ body {
     overflow-x: hidden;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* Mobile device specific styles */
+body.mobile-device {
+    font-size: 14px;
+}
+
+body.mobile-device .container {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 15px;
+}
+
+body.mobile-device .hero-content {
+    width: 100%;
+    padding: 0 10px;
 }
 
 /* Accessibility and motion preferences */
@@ -60,13 +86,22 @@ body {
     * { animation: none !important; transition: none !important; }
 }
 
+* {
+    box-sizing: border-box;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    width: 100%;
 }
 
-img { max-width: 100%; height: auto; }
+/* Ensure all elements are responsive */
+img, video, iframe {
+    max-width: 100%;
+    height: auto;
+}
 
 /* Navigation */
 .navbar {
@@ -1034,6 +1069,30 @@ section, .hero, .navbar, footer { width: 100%; overflow-x: hidden; }
     100% { background-position: 40px 40px, 40px 40px; }
 }
 
+/* Mobile First Approach */
+@media screen and (max-width: 767px) {
+    .container {
+        padding: 0 15px;
+        width: 100%;
+    }
+    
+    .hero-content {
+        width: 100%;
+        padding: 0 10px;
+    }
+    
+    .services-grid,
+    .consultation-grid {
+        width: 100%;
+    }
+    
+    .service-card,
+    .consultation-item {
+        width: 100%;
+        margin: 0;
+    }
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
     .container {
@@ -1059,6 +1118,11 @@ section, .hero, .navbar, footer { width: 100%; overflow-x: hidden; }
 }
 
 @media (max-width: 768px) {
+    /* Force mobile layout */
+    html {
+        font-size: 14px;
+    }
+    
     .hamburger {
         display: flex;
     }
@@ -1188,12 +1252,20 @@ section, .hero, .navbar, footer { width: 100%; overflow-x: hidden; }
 }
 
 @media (max-width: 480px) {
+    /* Force mobile layout for small screens */
+    html {
+        font-size: 12px;
+    }
+    
     .container {
         padding: 0 15px;
+        width: 100%;
+        max-width: 100%;
     }
     
     .nav-container {
         padding: 0 10px;
+        width: 100%;
     }
     
     .hero-content {
