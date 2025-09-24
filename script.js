@@ -282,10 +282,43 @@ function forceMobileViewport() {
         
         // Add mobile class to body
         document.body.classList.add('mobile-device');
+        
+        // Force mobile layout
+        document.body.style.fontSize = '14px';
+        
+        // Ensure all containers are full width
+        const containers = document.querySelectorAll('.container');
+        containers.forEach(container => {
+            container.style.width = '100%';
+            container.style.maxWidth = '100%';
+            container.style.padding = '0 15px';
+        });
+        
+        // Force hero content to be block
+        const heroContent = document.querySelector('.hero-content');
+        if (heroContent) {
+            heroContent.style.display = 'block';
+            heroContent.style.width = '100%';
+        }
+        
+        // Force services grid to be block
+        const servicesGrids = document.querySelectorAll('.services-grid, .consultation-grid');
+        servicesGrids.forEach(grid => {
+            grid.style.display = 'block';
+        });
+        
+        // Force service cards to be full width
+        const serviceCards = document.querySelectorAll('.service-card, .consultation-item');
+        serviceCards.forEach(card => {
+            card.style.width = '100%';
+            card.style.display = 'block';
+            card.style.marginBottom = '20px';
+        });
     }
 }
 
-// Run on load and resize
+// Run immediately and on load/resize
+forceMobileViewport();
 window.addEventListener('load', forceMobileViewport);
 window.addEventListener('resize', forceMobileViewport);
 
