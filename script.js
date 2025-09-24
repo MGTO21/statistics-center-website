@@ -284,7 +284,13 @@ function forceMobileViewport() {
         document.body.classList.add('mobile-device');
         
         // Force mobile layout
+        document.documentElement.style.width = '100%';
+        document.documentElement.style.maxWidth = '100%';
+        document.documentElement.style.overflowX = 'hidden';
+        document.body.style.width = '100%';
+        document.body.style.maxWidth = '100%';
         document.body.style.fontSize = '14px';
+        document.body.style.overflowX = 'hidden';
         
         // Ensure all containers are full width
         const containers = document.querySelectorAll('.container');
@@ -292,6 +298,7 @@ function forceMobileViewport() {
             container.style.width = '100%';
             container.style.maxWidth = '100%';
             container.style.padding = '0 15px';
+            container.style.boxSizing = 'border-box';
         });
         
         // Force hero content to be block
@@ -299,21 +306,48 @@ function forceMobileViewport() {
         if (heroContent) {
             heroContent.style.display = 'block';
             heroContent.style.width = '100%';
+            heroContent.style.maxWidth = '100%';
+            heroContent.style.boxSizing = 'border-box';
         }
         
         // Force services grid to be block
         const servicesGrids = document.querySelectorAll('.services-grid, .consultation-grid');
         servicesGrids.forEach(grid => {
             grid.style.display = 'block';
+            grid.style.width = '100%';
+            grid.style.maxWidth = '100%';
         });
         
         // Force service cards to be full width
         const serviceCards = document.querySelectorAll('.service-card, .consultation-item');
         serviceCards.forEach(card => {
             card.style.width = '100%';
+            card.style.maxWidth = '100%';
             card.style.display = 'block';
             card.style.marginBottom = '20px';
+            card.style.boxSizing = 'border-box';
         });
+        
+        // Force all sections to be full width
+        const sections = document.querySelectorAll('section');
+        sections.forEach(section => {
+            section.style.width = '100%';
+            section.style.maxWidth = '100%';
+        });
+        
+        // Force navbar to be full width
+        const navbar = document.querySelector('.navbar');
+        if (navbar) {
+            navbar.style.width = '100%';
+            navbar.style.maxWidth = '100%';
+        }
+        
+        // Force nav container to be full width
+        const navContainer = document.querySelector('.nav-container');
+        if (navContainer) {
+            navContainer.style.width = '100%';
+            navContainer.style.maxWidth = '100%';
+        }
     }
 }
 
